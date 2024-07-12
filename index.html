@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nemesis Hosting</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(20px);
+        animation-fill-mode: forwards;
+      }
+      .visible {
+        animation-name: fadeInUp;
+        animation-duration: 1s;
+        animation-delay: 0.3s;
+      }
+      .hover-underline-animation {
+        display: inline-block;
+        position: relative;
+        color: white;
+        transition: color 0.3s ease;
+      }
+      .hover-underline-animation::after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        transform: scaleX(0);
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #fff;
+        transform-origin: bottom right;
+        transition: transform 0.25s ease-out;
+      }
+      .hover-underline-animation:hover::after {
+        transform: scaleX(1);
+        transform-origin: bottom left;
+      }
+      .hover-underline-animation:hover {
+        color: #ffeb3b;
+      }
+      #menu-button:hover {
+        transform: scale(1.1);
+      }
+      .hero {
+        background-image: url("./utils/header-waves.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        width: 100vw;
+        height: 100vh;
+      }
+      .header {
+        background-color: #d4307b;
+      }
+      .footer {
+        background-color: #d4307b;
+      }
+      .comparison-table {
+        background-image: url("./utils/footer-waves.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      @keyframes gradientBG {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body class="font-sans bg-white text-gray-900 min-h-screen">
+    <button
+      type="button"
+      data-twe-ripple-init
+      data-twe-ripple-color="light"
+      class="!fixed bottom-5 end-5 hidden z-10 rounded-full bg-[#d4307b] p-3 text-xs font-medium uppercase leading-tight text-white shadow-md transition duration-150 ease-in-out hover:bg-[#c41c6f] hover:shadow-lg focus:bg-[#c41c6f] focus:shadow-lg focus:outline-none focus:ring-0 active:bg-[#b01965] active:shadow-lg"
+      id="btn-back-to-top"
+      aria-label="Back to top"
+    >
+      <span class="[&>svg]:w-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="3"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M4.5 10.5 12 3m0 0 7.5 7.5M12 3v18"
+          />
+        </svg>
+      </span>
+    </button>
+
+    <header
+      class="bg-gradient-to-r py-4 shadow-lg relative overflow-hidden header"
+    >
+      <nav class="max-w-7xl mx-auto flex justify-between items-center px-4">
+        <div class="text-white text-2xl font-bold">Nemesis Hosting</div>
+        <ul class="hidden md:flex space-x-6 text-white">
+          <li>
+            <a href="#features" class="hover-underline-animation text-white"
+              >Features</a
+            >
+          </li>
+          <li>
+            <a href="#pricing" class="hover-underline-animation text-white"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover-underline-animation text-white"
+              >Terms of Service</a
+            >
+          </li>
+          <li>
+            <a href="#" class="hover-underline-animation text-white"
+              >Privacy Policy</a
+            >
+          </li>
+        </ul>
+        <div class="hidden md:block">
+          <a href="#" class="hover-underline-animation text-white"
+            >Login to Control Panel</a
+          >
+        </div>
+        <div class="md:hidden flex items-center">
+          <button
+            id="menu-button"
+            class="text-white focus:outline-none"
+            aria-label="Menu button"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="md:hidden hidden">
+        <ul class="flex flex-col items-center space-y-4 py-4">
+          <li>
+            <a href="#features" class="text-white hover-underline-animation"
+              >Features</a
+            >
+          </li>
+          <li>
+            <a href="#pricing" class="text-white hover-underline-animation"
+              >Pricing</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-white hover-underline-animation"
+              >Terms of Service</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-white hover-underline-animation"
+              >Privacy Policy</a
+            >
+          </li>
+          <li>
+            <a href="#" class="text-white hover-underline-animation"
+              >Login to Control Panel</a
+            >
+          </li>
+        </ul>
+      </div>
+    </header>
+    <section
+      class="hero text-white py-24 text-center relative overflow-hidden animate-on-scroll"
+    >
+      <h1 class="text-5xl font-bold mb-6 animate-on-scroll main-title">
+        Experience the Best Server Hosting.
+      </h1>
+      <p class="text-xl mb-8 animate-on-scroll">
+        Unleash your creativity with our lag-free servers. Get started
+        with our affordable plans.
+      </p>
+      <button
+        class="cta-button bg-white text-pink-700 font-bold py-3 px-6 rounded-full shadow-lg hover:bg-gray-200 transition-transform transform hover:scale-110 animate-on-scroll"
+      >
+        Get Started Now
+      </button>
+    </section>
+    <section
+      id="features"
+      class="features flex justify-center flex-wrap from-gray-100 via-gray-200 to-gray-300"
+    >
+      <div
+        class="feature bg-white p-8 m-4 rounded-lg shadow-lg text-center transform transition-transform duration-300 hover:scale-105 animate-on-scroll animate__animated animate__fadeInUp"
+      >
+        <img
+          src="./utils/System Settings SVG File.svg"
+          alt="Easy Setup Icon"
+          class="mx-auto mb-4 animate__animated animate__zoomIn"
+          style="width: 100px"
+        />
+        <h3
+          class="text-2xl font-semibold mb-2 text-indigo-600 animate__animated animate__fadeInUp"
+        >
+          Easy Setup
+        </h3>
+        <p class="text-gray-700 animate__animated animate__fadeInUp">
+          Set up your Minecraft server effortlessly. Axolotl Hosting makes
+          server creation a breeze.
+        </p>
+      </div>
+      <div
+        class="feature bg-white p-8 m-4 rounded-lg shadow-lg text-center transform transition-transform duration-300 hover:scale-105 animate-on-scroll animate__animated animate__fadeInUp delay-1s"
+      >
+        <img
+          src="./utils/Cloud Acceleration SVG File.svg"
+          alt="Optimized Performance Icon"
+          class="mx-auto mb-4 animate__animated animate__zoomIn delay-1s"
+          style="width: 100px"
+        />
+        <h3
+          class="text-2xl font-semibold mb-2 text-green-600 animate__animated animate__fadeInUp delay-1s"
+        >
+          Optimized Performance
+        </h3>
+        <p class="text-gray-700 animate__animated animate__fadeInUp delay-1s">
+          Experience blazing-fast performance and lag-proof security to protect
+          your server and players.
+        </p>
+      </div>
+      <div
+        class="feature bg-white p-8 m-4 rounded-lg shadow-lg text-center transform transition-transform duration-300 hover:scale-105 animate-on-scroll animate__animated animate__fadeInUp delay-2s"
+      >
+        <img
+          src="./utils/Ddos Protection SVG Vector Icon.svg"
+          alt="DDoS Protection Icon"
+          class="mx-auto mb-4 animate__animated animate__zoomIn delay-2s"
+          style="width: 100px"
+        />
+        <h3
+          class="text-2xl font-semibold mb-2 text-red-600 animate__animated animate__fadeInUp delay-2s"
+        >
+          DDoS Protection
+        </h3>
+        <p class="text-gray-700 animate__animated animate__fadeInUp delay-2s">
+          All our servers come with built-in DDoS protection, ensuring your
+          Minecraft world stays safe and secure.
+        </p>
+      </div>
+    </section>
+    <section id="pricing" class="pricing flex justify-center py-16 text-white">
+      <div
+        class="plan bg-white text-gray-700 p-10 m-4 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105"
+      >
+        <h3 class="text-3xl font-bold mb-4">Free Plan</h3>
+        <p class="price text-5xl font-bold mb-4">$0</p>
+        <p class="description mb-6">Free Hosting</p>
+        <ul class="list-none mb-6">
+          <li class="mb-2">30 Player Slots</li>
+          <li class="mb-2">2GB RAM</li>
+          <li class="mb-2">24/7 Support</li>
+        </ul>
+        <button
+          class="cta-button bg-pink-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-pink-400 transition-transform transform hover:scale-110"
+        >
+          Get Started
+        </button>
+      </div>
+      <div
+        class="plan bg-white text-gray-700 p-10 m-4 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105"
+      >
+        <h3 class="text-3xl font-bold mb-4">Pro Plan</h3>
+        <p class="price text-5xl font-bold mb-4">$25</p>
+        <p class="description mb-6">per month</p>
+        <ul class="list-none mb-6">
+          <li class="mb-2">Unlimited Player Slots</li>
+          <li class="mb-2">5GB RAM</li>
+          <li class="mb-2">Premium Support</li>
+        </ul>
+        <button
+          class="cta-button bg-pink-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-pink-400 transition-transform transform hover:scale-110"
+        >
+          Get Started
+        </button>
+      </div>
+<div
+        class="plan bg-white text-gray-700 p-10 m-4 rounded-lg shadow-lg text-center transform transition-transform hover:scale-105"
+      >
+        <h3 class="text-3xl font-bold mb-4">Pro Plan</h3>
+        <p class="price text-5xl font-bold mb-4">$100</p>
+        <p class="description mb-6">per month</p>
+        <ul class="list-none mb-6">
+          <li class="mb-2">Unlimited Player Slots</li>
+          <li class="mb-2">5GB RAM</li>
+          <li class="mb-2">Premium Support</li>
+        </ul>
+        <button
+          class="cta-button bg-pink-500 text-white font-bold py-3 px-6 rounded-full shadow-lg hover:bg-pink-400 transition-transform transform hover:scale-110"
+        >
+          Get Started
+        </button>
+      </div>
+    </section>
+    <section class="comparison-table text-black">
+      <h2 class="text-4xl font-bold text-center mb-12">
+        The way game hosting was meant to be
+      </h2>
+      <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="p-8 bg-gray-100 rounded-lg shadow-lg text-center">
+          <h3 class="text-2xl font-bold mb-4">Better bang for your buck</h3>
+          <ul class="space-y-4 text-left">
+            <li class="flex justify-between items-center">
+              <span>Nemesis Hosting</span>
+              <span class="text-green-600 font-bold">$1.90/GB</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Lilypad</span>
+              <span class="text-yellow-600 font-bold">$2.57/GB</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Bisect Hosting</span>
+              <span class="text-gray-600 font-bold">$5/GB</span>
+            </li>
+            <li class="flex justify-between items-center">
+              <span>Shockbyte</span>
+              <span class="text-red-600 font-bold">$2.5/GB</span>
+            </li>
+          </ul>
+        </div>
+        <div class="p-8 bg-gray-100 rounded-lg shadow-lg text-center">
+          <h3 class="text-2xl font-bold mb-4">No noisy neighbours</h3>
+          <p class="text-gray-700">
+            Lilypad ensures you always have access to the resources you’re
+            paying for, especially when you need them the most.
+          </p>
+        </div>
+        <div class="p-8 bg-gray-100 rounded-lg shadow-lg text-center">
+          <h3 class="text-2xl font-bold mb-4">Unstoppable protection</h3>
+          <p class="text-gray-700">
+            Downtime hurts your player retention, and that’s why our DDoS
+            protection is optimized specifically for games like Minecraft —
+            available globally and at no extra cost.
+          </p>
+        </div>
+        <div class="p-8 bg-gray-100 rounded-lg shadow-lg text-center">
+          <h3 class="text-2xl font-bold mb-4">Premium network</h3>
+          <p class="text-gray-700">
+            We’ve strategically built our global network to ensure the best
+            possible routing and latency for your players.
+          </p>
+        </div>
+      </div>
+    </section>
+    <footer class="footer text-white text-center py-4">
+      <p>&copy; Nemesis Hosting</p>
+    </footer>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        });
+        document.querySelectorAll(".animate-on-scroll").forEach((item) => {
+          observer.observe(item);
+        });
+        // Handling the navigation menu clicks for smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+          anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            let target = document.querySelector(this.getAttribute("href"));
+            if (target) {
+              target.scrollIntoView({
+                behavior: "smooth",
+              });
+            }
+          });
+        });
+        const menuButton = document.getElementById("menu-button");
+        const mobileMenu = document.getElementById("mobile-menu");
+        menuButton.addEventListener("click", () => {
+          mobileMenu.classList.toggle("hidden");
+        });
+        // When the user scrolls down 20px from the top of the document, show the button
+        const mybutton = document.getElementById("btn-back-to-top");
+        const scrollFunction = () => {
+          if (
+            document.body.scrollTop > 20 ||
+            document.documentElement.scrollTop > 20
+          ) {
+            mybutton.classList.remove("hidden");
+          } else {
+            mybutton.classList.add("hidden");
+          }
+        };
+        const backToTop = () => {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        };
+        // When the user clicks on the button, scroll to the top of the document
+        mybutton.addEventListener("click", backToTop);
+        window.addEventListener("scroll", scrollFunction);
+      });
+    </script>
+  </body>
+</html>
